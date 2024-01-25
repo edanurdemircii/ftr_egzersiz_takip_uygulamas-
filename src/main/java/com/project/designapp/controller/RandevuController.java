@@ -33,20 +33,14 @@ public class RandevuController {
 		return randevuService.getAllRandevu();
 	}
 	//Hastanın randevularını getirmek için
-	@GetMapping("/{hastaId}")
-    public List<Randevu> getAllHastaRandevu(@RequestParam Optional<Long> hastaId){
-	    return randevuService.getAllHastaRandevu(hastaId);
-    }
+
 	
 	//Doktorun randevularını getirmek için
-	@GetMapping("/{doktorId}")
-    public List<Randevu> getAllDoktorRandevu(@RequestParam Optional<Long> doktorId){
-	    return randevuService.getAllDoktorRandevu(doktorId);
-    }
+
 	
 	@PostMapping 
 	public Randevu createRandevu(@RequestBody RandevuCreateRequest newRandevuRequest) {
-		return randevuService.createRandevu(newRandevuRequest);
+		return randevuService.createRandevu2(newRandevuRequest);
 	}
 	
 	 @GetMapping("/{randevuId}")

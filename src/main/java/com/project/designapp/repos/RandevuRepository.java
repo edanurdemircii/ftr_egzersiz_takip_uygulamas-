@@ -8,8 +8,6 @@ import com.project.designapp.entities.Randevu;
 
 public interface RandevuRepository extends JpaRepository<Randevu, Long> {
 
-	List<Randevu> findByHastaId(Long hastaId);
 
-	List<Randevu> findByDoktorId(Long doktorId);
 
 }

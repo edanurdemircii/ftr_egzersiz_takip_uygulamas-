@@ -17,59 +17,89 @@ import lombok.Data;
 
 @Entity
 @Data
-@Table(name="randevu")
+@Table(name="randevular")
 
 
 public class Randevu {
 	@Id
 	Long id;
-	@ManyToOne(fetch=FetchType.LAZY) 
-	@JoinColumn(name="hasta_id",nullable=false)
-    @OnDelete(action=OnDeleteAction.CASCADE) 
-	@JsonIgnore
-	Hasta hasta;
-	
-	@ManyToOne(fetch=FetchType.LAZY) 
-	@JoinColumn(name="doktor_id",nullable=false)
-    @OnDelete(action=OnDeleteAction.CASCADE) 
-	@JsonIgnore
-	Doktor doktor;
 
-	
-    Date tarih;
-    String randevuAciklamasi;
-    
-    
+	String adi;
+	String soyadi;
+	String email;
+	Date tarih;
+	String saat;
+	String randevuAciklamasi;
+
 	public Long getId() {
 		return id;
 	}
+
 	public void setId(Long id) {
 		this.id = id;
 	}
-	public Hasta getHasta() {
-		return hasta;
+
+	public String getAdi() {
+		return adi;
 	}
-	public void setHasta(Hasta hasta) {
-		this.hasta = hasta;
+
+	public void setAdi(String adi) {
+		this.adi = adi;
 	}
-	public Doktor getDoktor() {
-		return doktor;
+
+	public String getSoyadi() {
+		return soyadi;
 	}
-	public void setDoktor(Doktor doktor) {
-		this.doktor = doktor;
+
+	public void setSoyadi(String soyadi) {
+		this.soyadi = soyadi;
 	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
 	public Date getTarih() {
 		return tarih;
 	}
+
 	public void setTarih(Date tarih) {
 		this.tarih = tarih;
 	}
+
+	public String getSaat() {
+		return saat;
+	}
+
+	public void setSaat(String saat) {
+		this.saat = saat;
+	}
+
 	public String getRandevuAciklamasi() {
 		return randevuAciklamasi;
 	}
+
 	public void setRandevuAciklamasi(String randevuAciklamasi) {
 		this.randevuAciklamasi = randevuAciklamasi;
 	}
+
+	public String getDoktorBilgi() {
+		return doktorBilgi;
+	}
+
+	public void setDoktorBilgi(String doktorBilgi) {
+		this.doktorBilgi = doktorBilgi;
+	}
+
+	String doktorBilgi;
+
+
+
+
     
     
     

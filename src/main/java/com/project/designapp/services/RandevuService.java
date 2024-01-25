@@ -16,48 +16,39 @@ import com.project.designapp.requests.RandevuUpdateRequest;
 public class RandevuService {
 	
 	RandevuRepository randevuRepository;
-	private HastaService hastaService;
-	private DoktorService doktorService;
+
 	
 	
 	
-	public RandevuService(RandevuRepository randevuRepository, HastaService hastaService, DoktorService doktorService) {
+	public RandevuService(RandevuRepository randevuRepository) {
 		this.randevuRepository = randevuRepository;
-		this.hastaService = hastaService;
-		this.doktorService = doktorService;
-	}
 
-
-
-	public List<Randevu> getAllHastaRandevu(Optional<Long> hastaId) {
-		if(hastaId.isPresent())
-			return randevuRepository.findByHastaId(hastaId.get());
-		return randevuRepository.findAll();
-	}
-
-
-
-	public List<Randevu> getAllDoktorRandevu(Optional<Long> doktorId) {
-		if(doktorId.isPresent())
-			return randevuRepository.findByDoktorId(doktorId.get());
-		return randevuRepository.findAll();
 	}
 
 
 
 	public Randevu createRandevu(RandevuCreateRequest newRandevuRequest) {
-		Hasta hasta=hastaService.getOneHasta(newRandevuRequest.getHastaId());
-		if(hasta==null)
-			return null;
-		Doktor doktor=doktorService.getOneDoktor(newRandevuRequest.getDoktorId());
-		if(doktor==null)
-			return null;
+
 		Randevu toSave=new Randevu();
 		toSave.setId(newRandevuRequest.getId());
 		toSave.setTarih(newRandevuRequest.getTarih());
 		toSave.setRandevuAciklamasi(newRandevuRequest.getRandevuAciklamasi());
-		toSave.setHasta(hasta);
-		toSave.setDoktor(doktor);
+
+		return randevuRepository.save(toSave);
+	}
+
+	public Randevu createRandevu2(RandevuCreateRequest newRandevuRequest) {
+
+		Randevu toSave=new Randevu();
+		toSave.setId(newRandevuRequest.getId());
+		toSave.setAdi(newRandevuRequest.getAdi());
+		toSave.setSoyadi(newRandevuRequest.getSoyadi());
+		toSave.setTarih(newRandevuRequest.getTarih());
+		toSave.setSaat(newRandevuRequest.getSaat());
+		toSave.setEmail(newRandevuRequest.getEmail());
+		toSave.setDoktorBilgi(newRandevuRequest.getDoktorBilgi());
+		toSave.setRandevuAciklamasi(newRandevuRequest.getRandevuAciklamasi());
+
 		return randevuRepository.save(toSave);
 	}
 
